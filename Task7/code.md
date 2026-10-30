@@ -88,7 +88,7 @@ Enter Amount: 2500
 Enter Transaction Type (DEPOSIT/WITHDRAWAL): TRANSFER
 ``
 
-## 5. Sample Output
+## 5.. Sample Output
 ```
 ========== TRANSACTION AUDIT REPORT ==========
 
