@@ -1,120 +1,115 @@
+# Hospital Billing and Patient Classification System Using Python
 
-# Hospital Billing and Patient Classification System
+## 1. Problem Statement
+Hospital Billing and Patient Classification: Process consultation, diagnostic, and treatment charges, apply conditional concessions, validate billing constraints, and classify patients according to a supplied payment policy. 
 
-SENIOR_CONCESSION = 10
-HIGH_BILL_CONCESSION = 5
-BILL_LIMIT = 10000
-SENIOR_AGE = 60
+## 2. Algorithm
 
+1. Start the program.
+2. Input patient name and age.
+3. Input consultation charges.
+4. Input diagnostic charges.
+5. Input treatment charges.
+6. Validate that all charges are non-negative.
+7. Calculate total bill:
 
-def calculate_bill(consultation, diagnostic, treatment, age):
-    # Calculate total charges
-    total = consultation + diagnostic + treatment
+\\[ Total = Consultation + Diagnostic + Treatment \\]
 
-    # Calculate conditional concessions
-    concession_rate = 0
+8. Check concession eligibility:
+   - If age is 60 or above, apply 10% concession.
+   - If total bill exceeds ₹10,000, apply 5% concession.
+   - If both conditions are satisfied, apply 15% concession.
+9. Calculate concession amount.
+10. Calculate final bill:
 
-    if age >= SENIOR_AGE:
-        concession_rate += SENIOR_CONCESSION
+\\[ Final\ Bill = Total - Concession \\]
 
-    if total > BILL_LIMIT:
-        concession_rate += HIGH_BILL_CONCESSION
+11. Input the amount paid by the patient.
+12. Validate that payment is between zero and the final bill.
+13. Classify the patient:
 
-    # Calculate concession and final bill
-    concession = total * concession_rate / 100
-    final_bill = total - concession
+- If payment equals final bill, classify as Fully Paid.
+- If payment is greater than zero but less than final bill, classify as Partially Paid.
+- If payment is zero, classify as Unpaid.
 
-    return total, concession, final_bill, concession_rate
+14. Calculate outstanding balance.
+15. Display the complete hospital bill.
+16. Stop the program.
 
+## 3. Flowchart Using Mermaid
+```mermaid
+flowchart TD
+    A([Start]) --> B[/Enter patient name and age/]
+    B --> C[/Enter consultation charges/]
+    C --> D[/Enter diagnostic and treatment charges/]
+    D --> E{Are all charges valid?}
+    E -- No --> F[Display invalid billing details]
+    F --> Z([Stop])
+    E -- Yes --> G[Calculate total bill]
+    G --> H{Age >= 60?}
+    H -- Yes --> I[Apply 10% senior citizen concession]
+    H -- No --> J[No senior citizen concession]
+    I --> K{Total bill > 10000?}
+    J --> K
+    K -- Yes --> L[Add 5% concession]
+    K -- No --> M[Keep existing concession]
+    L --> N[Calculate final bill]
+    M --> N
+    N --> O[/Enter amount paid/]
+    O --> P{Is payment valid?}
+    P -- No --> Q[Display invalid payment]
+    Q --> Z
+    P -- Yes --> R[Calculate outstanding balance]
+    R --> S{Amount paid = Final bill?}
+    S -- Yes --> T[Classify as Fully Paid]
+    S -- No --> U{Amount paid = 0?}
+    U -- Yes --> V[Classify as Unpaid]
+    U -- No --> W[Classify as Partially Paid]
+    T --> X[Display final hospital bill]
+    V --> X
+    W --> X
+    X --> Z([Stop])
+```
 
-def classify_patient(paid, final_bill):
-    # Classify patient according to payment policy
-    if paid == final_bill:
-        return "Fully Paid"
-    elif paid == 0:
-        return "Unpaid"
-    else:
-        return "Partially Paid"
+## 5. Sample Input
 
+```
+===== HOSPITAL BILLING SYSTEM =====
 
-def main():
-    print("===== HOSPITAL BILLING SYSTEM =====")
+Enter patient name: Ravi
+Enter patient age: 65
+Enter consultation charges: Rs.2000
+Enter diagnostic charges: Rs.3000
+Enter treatment charges: Rs.7000
+```
 
-    try:
-        # Get patient details
-        name = input("Enter patient name: ").strip()
+Payment input:
 
-        if not name:
-            print("Patient name cannot be empty.")
-            return
+```
+Enter amount paid: Rs.8000
+```
 
-        age = int(input("Enter patient age: "))
+## 6. Sample Output
 
-        if age < 0:
-            print("Age cannot be negative.")
-            return
+```
+===== BILL SUMMARY =====
 
-        # Get hospital charges
-        consultation = float(
-            input("Enter consultation charges: Rs.")
-        )
+Patient Name       : Ravi
+Patient Age        : 65
+Consultation       : Rs.2000.00
+Diagnostic         : Rs.3000.00
+Treatment          : Rs.7000.00
+Total Bill         : Rs.12000.00
+Concession Rate    : 15%
+Concession Amount  : Rs.1800.00
+Final Bill         : Rs.10200.00
 
-        diagnostic = float(
-            input("Enter diagnostic charges: Rs.")
-        )
+===== PAYMENT DETAILS =====
 
-        treatment = float(
-            input("Enter treatment charges: Rs.")
-        )
+Amount Paid        : Rs.8000.00
+Outstanding Balance: Rs.2200.00
+Patient Category   : Partially Paid
 
-        # Validate charges
-        if min(consultation, diagnostic, treatment) < 0:
-            print("Charges cannot be negative.")
-            return
-
-        # Calculate hospital bill
-        total, concession, final_bill, rate = calculate_bill(
-            consultation, diagnostic, treatment, age
-        )
-
-        print("\n===== BILL SUMMARY =====")
-        print(f"Patient Name       : {name}")
-        print(f"Patient Age        : {age}")
-        print(f"Consultation       : Rs.{consultation:.2f}")
-        print(f"Diagnostic         : Rs.{diagnostic:.2f}")
-        print(f"Treatment          : Rs.{treatment:.2f}")
-        print(f"Total Bill         : Rs.{total:.2f}")
-        print(f"Concession Rate    : {rate}%")
-        print(f"Concession Amount  : Rs.{concession:.2f}")
-        print(f"Final Bill         : Rs.{final_bill:.2f}")
-
-        # Get payment details
-        paid = float(input("\nEnter amount paid: Rs."))
-
-        # Validate payment
-        if paid < 0 or paid > final_bill:
-            print("Invalid payment amount!")
-            print("Payment must be between 0 and final bill.")
-            return
-
-        # Calculate balance
-        balance = final_bill - paid
-
-        # Classify patient
-        status = classify_patient(paid, final_bill)
-
-        # Display final details
-        print("\n===== PAYMENT DETAILS =====")
-        print(f"Amount Paid        : Rs.{paid:.2f}")
-        print(f"Outstanding Balance: Rs.{balance:.2f}")
-        print(f"Patient Category   : {status}")
-
-        print("\n===== BILL GENERATED SUCCESSFULLY =====")
-
-    except ValueError:
-        print("Invalid input! Please enter valid numeric values.")
-
-
-if __name__ == "__main__":
-    main()
+===== BILL GENERATED SUCCESSFULLY =====
+```
 
