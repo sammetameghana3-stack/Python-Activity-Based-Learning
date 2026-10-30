@@ -65,7 +65,6 @@ flowchart TD
     U --> V
     V --> W([Stop])
 ```
-
 ## 4. Sample Input
 ```
 ===== RAILWAY FARE AND RESERVATION CALCULATOR =====
@@ -97,9 +96,7 @@ Available Travel Classes:
 
 Select travel class: sleeper
 ```
-
 Cancellation input:
-
 ```
 Do you want to cancel the reservation? (yes/no): yes
 ```
