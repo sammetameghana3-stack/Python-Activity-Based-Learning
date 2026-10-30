@@ -143,4 +143,3 @@ Winner: Alpha
 
 ===== RANKING COMPLETED SUCCESSFULLY =====
 ```
-
