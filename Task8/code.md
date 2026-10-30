@@ -1,5 +1,4 @@
 # Library Borrowing and Fine Reconciliation Using Python
-
 ## 1. Problem Statement
 Library Borrowing and Fine Reconciliation: Analyse tuples representing book identifiers, 
 borrowing periods, and return delays; calculate fines, identify overdue records, and reconcile book 
