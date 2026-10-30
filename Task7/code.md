@@ -1,8 +1,9 @@
 # Tuple-Based Transaction Audit Using Python
 
 ## 1. Problem Statement
-Tuple-Based Transaction Audit: Process transaction tuples containing identifiers, amounts, and 
+ Tuple-Based Transaction Audit: Process transaction tuples containing identifiers, amounts, and 
 transaction types; detect duplicate identifiers, invalid amounts, and suspicious sequences. 
+
 ## 2. Algorithm
 
 1. Start the program.
@@ -49,6 +50,7 @@ flowchart TD
 ```
 
 ## 4. Sample Input
+
 ```
 Enter number of transactions: 7
 
@@ -86,9 +88,10 @@ Transaction 7
 Enter Transaction ID: T106
 Enter Amount: 2500
 Enter Transaction Type (DEPOSIT/WITHDRAWAL): TRANSFER
-``
+```
 
-## 5.. Sample Output
+## 5. Sample Output
+
 ```
 ========== TRANSACTION AUDIT REPORT ==========
 
@@ -125,3 +128,4 @@ Audit Completed.
 ```
 
 Note: The sample output illustrates the intended audit logic. For a stricter implementation, exclude all occurrences of a duplicated ID from valid transactions before checking suspicious sequences.
+
