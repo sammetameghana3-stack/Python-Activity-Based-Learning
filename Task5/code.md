@@ -120,6 +120,3 @@ No low-performing subjects found.
 ```
 
 Note: In this sample, Mathematics has an average of 56.67%, so it is not classified as low-performing because the threshold is below 50%.
-
-
-Conclusion: This system simplifies student performance analysis by automatically calculating statistics and identifying academic strengths and areas that may need improvement.
