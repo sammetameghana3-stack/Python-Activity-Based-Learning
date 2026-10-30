@@ -65,15 +65,8 @@ flowchart TD
     U --> V
     V --> W([Stop])
 ```
-## 4. Source Code
-Save the following program as `railway_fare.py`.
 
-This program uses Python functions, lists, dictionaries, loops, conditional statements, and arithmetic operations.
-
-```
-# Railway Fare and Reservation CalculatorRESERVATION_FEE = 40CANCELLATION_RATE = 25CLASS_MULTIPLIERS = {    "sleeper": 1.0,    "ac 3 tier": 1.5,    "ac 2 tier": 2.0,    "ac first class": 3.0}# Calculate fare using progressive distance slabsdef calculate_basic_fare(distance):    if distance <= 100:        fare = distance * 1.0    elif distance <= 500:        fare = (100 * 1.0) + ((distance - 100) * 1.5)    else:        fare = (100 * 1.0) + (400 * 1.5)        fare += (distance - 500) * 2.0    return fare# Calculate age-based concessiondef get_concession(age):    if age < 5:        return 100
-```
-## 5. Sample Input
+## 4. Sample Input
 ```
 ===== RAILWAY FARE AND RESERVATION CALCULATOR =====
 
@@ -110,7 +103,7 @@ Cancellation input:
 ```
 Do you want to cancel the reservation? (yes/no): yes
 ```
-## 6. Sample Output
+## 5. Sample Output
 ```
 ===== PASSENGER FARE DETAILS =====
 
@@ -144,4 +137,3 @@ Reservation Status     : Cancelled
 ```
 
 
-Conclusion: This project provides an efficient way to calculate railway reservation fares, apply passenger concessions, and process cancellation charges automatically.
